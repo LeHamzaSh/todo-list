@@ -34,7 +34,7 @@
       </td>
 
       <td>
-        <div class="text-center">
+        <div class="text-center" @click="deleteItem(index)">
           <span class="fa fa-trash"></span>
         </div>
       </td>
@@ -77,6 +77,14 @@ export default {
         name: this.task,
         status: 'to-do'
       })
+
+      // Reset the Enter Task after entering data
+      this.task = '';
+    },
+
+    deleteItem(index){
+      /* Remove the Item from the array */
+      this.tasks.splice(index, 1) // Remove only 1 item
     }
   }
 }
