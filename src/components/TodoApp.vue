@@ -4,8 +4,8 @@
 
     <!-- Input -->
     <div class="d-flex">
-      <input type="text" placeholder="Enter Task" class="form-control">
-      <button class="btn btn-danger rounded-0">Submit</button>
+      <input v-model="task" type="text" placeholder="Enter Task" class="form-control">
+      <button @click="submitTasks" class="btn btn-danger rounded-0">Submit</button>
     </div>
 
     <!-- Table for Tasks -->
@@ -20,14 +20,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Play pingpong</td>
-      <td>To-do</td>
+    <tr v-for="(task, index) in tasks" :key="index">
+      <!-- Display the name of the Task -->
+      <td>{{ task.name }}</td>
+
+      <!-- Display the status of the Task -->
+      <td>{{ task.status }}</td>
+
       <td>
         <div class="text-center">
           <span class="fa fa-pen"></span>
         </div>
       </td>
+
       <td>
         <div class="text-center">
           <span class="fa fa-trash"></span>
@@ -45,6 +50,34 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+
+  data(){
+    return{
+      task: '',
+      tasks:[
+        {
+          name: 'Play Ping Pong.',
+          status: 'to-do'
+        },
+        {
+          name: 'Take out Trash',
+          status: 'in-progress'
+        }
+      ] 
+    }
+  },
+
+  methods:{
+    submitTasks(){
+      if(this.task.length === 0){
+        return alert('It cannot be empty!!')
+      }
+      this.tasks.push({
+        name: this.task,
+        status: 'to-do'
+      })
+    }
   }
 }
 </script>
