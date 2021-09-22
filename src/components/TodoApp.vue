@@ -23,8 +23,16 @@
     <tr>
       <td>Play pingpong</td>
       <td>To-do</td>
-      <td></td>
-      <td></td>
+      <td>
+        <div class="text-center">
+          <span class="fa fa-pen"></span>
+        </div>
+      </td>
+      <td>
+        <div class="text-center">
+          <span class="fa fa-trash"></span>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
